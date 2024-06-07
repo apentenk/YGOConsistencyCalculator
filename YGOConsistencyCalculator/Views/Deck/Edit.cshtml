@@ -1,0 +1,38 @@
+﻿@model YGOConsistencyCalculator.Models.DeckDto
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit Card</h2>
+<form action="/Deck/Update/@Model.DeckId" method="POST">
+    <div>
+        <input type="hidden" name="DeckId" value="@Model.DeckId" />
+    </div>
+    <div>
+        <label>Name:</label> <input type="text" name="DeckName" value="@Model.DeckName" />
+    </div>
+    <div>
+        <label>Deck list:</label> <input type="text" name="DeckList" value="@Model.DeckList" />
+    </div>
+    <div>
+        <input type="hidden" name="UserId" value="@Model.UserId" />
+    </div>
+    <div>
+        <label>Combo Chance:</label> <input type="text" name="StarterChance" value="@Model.StarterChance" />
+    </div>
+    <div>
+        <label>One-Card Combo Chance:</label> <input type="text" name="OneCardChance" value="@Model.OneCardChance" />
+    </div>
+    <div>
+        <label>Two-Card Combo Chance:</label> <input type="text" name="TwoCardChance" value="@Model.TwoCardChance" />
+    </div>
+    <div>
+        <label>Extender Chance:</label> <input type="text" name="ExtenderChance" value="@Model.ExtenderChance" />
+    </div>
+    <div>
+        <label>NonEngine Chance:</label> <input type="text" name="EngineReqChance" value="@Model.EngineReqChance" />
+    </div>
+    <div>
+        <input type="submit" value="Update Deck" />
+    </div>
+</form>

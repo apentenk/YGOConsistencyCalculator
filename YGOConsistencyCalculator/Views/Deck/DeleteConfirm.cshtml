@@ -1,0 +1,18 @@
+﻿@model YGOConsistencyCalculator.Models.DeckDto
+@{
+    ViewBag.Title = "Edit Deck";
+}
+
+<script src="~/Scripts/mydecks.js"></script>
+<div id="containershow">
+    <nav>
+        <a class="navlink" href="/Deck/MyDecks">Cancel</a>
+    </nav>
+    <h2>Are you sure you want to delete @Model.DeckName ?</h2>
+    <p>This action cannot be undone.</p>
+    <form method="POST" action="/Deck/Delete/@Model.DeckId">
+        <button class="delbutton">
+            Confirm Delete
+        </button>
+    </form>
+</div>

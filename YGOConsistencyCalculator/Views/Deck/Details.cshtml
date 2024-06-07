@@ -1,0 +1,22 @@
+﻿@model YGOConsistencyCalculator.Models.DeckDto
+@{
+    ViewBag.Title = "Details";
+}
+
+<div id="containershow">
+    <nav>
+        <a class="navlink" href="/Deck/List">Back To Decks</a>
+        <a class="dellink" href="/Deck/DeleteConfirm/@Model.DeckId">Delete</a>
+        <a class="navlink" href="/Deck/Edit/@Model.DeckId">Update</a>
+    </nav>
+    <h2>@Model.DeckName</h2>
+</div>
+<div>ID: @Model.DeckId</div>
+<div>UserId: @Model.UserId</div>
+<div>Name: @Model.DeckName</div>
+<div>Combo Chance: @Model.StarterChance</div>
+<div>One-Card Combo Chance: @Model.OneCardChance</div>
+<div>Two-Card Combo Chance: @Model.TwoCardChance</div>
+<div>Extender Combo Chance: @Model.ExtenderChance</div>
+<div>NonEngine Combo Chance: @Model.EngineReqChance</div>
+

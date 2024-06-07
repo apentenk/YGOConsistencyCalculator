@@ -1,0 +1,17 @@
+﻿@model YGOConsistencyCalculator.Models.ComboPieceDto
+@{
+    ViewBag.Title = "Details";
+}
+
+<div id="containershow">
+    <nav>
+        <a class="navlink" href="/ComboPiece/List">Back To Combo Pieces</a>
+        <a class="dellink" href="/ComboPiece/DeleteConfirm/@Model.ComboPieceId">Delete</a>
+        <a class="navlink" href="/ComboPiece/Edit/@Model.ComboPieceId">Update</a>
+    </nav>
+    <h2>@Model.ComboPieceId : @Model.DeckId</h2>
+</div>
+<div>ID: @Model.ComboPieceId</div>
+<div>Number: @Model.DeckId</div>
+<div>Name: @Model.Category</div>
+

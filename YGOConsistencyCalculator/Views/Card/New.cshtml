@@ -1,0 +1,39 @@
+﻿
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>New Card</h2>
+<form action="/Card/Create" method="POST">
+    <div>
+        <label>Number:</label> <input type="text" name="Number" />
+    </div>
+    <div>
+        <label>Name:</label> <input type="text" name="Name" />
+    </div>
+    <div>
+        <label>Card Frame:</label> <input type="text" name="CardFrame" />
+    </div>
+    <div>
+        <label>Card Type:</label> <input type="text" name="CardType" />
+    </div>
+    <div>
+        <label>Attribute:</label> <input type="text" name="Attribute" />
+    </div>
+    <div>
+        <label>Level:</label> <input type="text" name="Level" />
+    </div>
+    <div>
+        <label>Scale:</label> <input type="text" name="Scale" />
+    </div>
+    <div>
+        <label>Attack:</label> <input type="text" name="Attack" />
+    </div>
+    <div>
+        <label>Defense:</label> <input type="text" name="Defense" />
+    </div>
+    <div>
+        <input type="submit" value="Add Card"/>
+    </div>
+</form>
+

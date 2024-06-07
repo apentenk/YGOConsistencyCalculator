@@ -1,0 +1,97 @@
+﻿/* Set padding to keep content from hitting the edges */
+.body-content {
+    margin-top: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+/*#main-deck, #extra-deck {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+main {
+    display: flex;
+}
+
+section {
+    flex: 1 1 25%;
+}
+
+#deckview {
+    flex: 2 1 50%;
+}*/
+
+.md-button {
+    background-image: url(../Images/CardBorders/button.png);
+    background-size: 100% 100%;
+    padding-top: 2px;
+    padding-bottom: 5px;
+    color: #B6B6B6;
+}
+
+.md-button.hover {
+    background-image: url(../Images/CardBorders/buton-hover.png);
+}
+
+.md-button.active {
+    background-image: url(../Images/CardBorders/buton-hover.png);
+}
+
+.card-container {
+    height: 144px;
+}
+
+#card-view {
+    height: 50%;
+}
+
+
+label{
+    text-align: center;
+    width:100%;
+    height:100%;
+}
+
+
+.bigCard {
+    width: 70%;
+}
+
+.OneCard {
+    background-image: url(../Images/CardBorders/oneCard.png);
+}
+
+.TwoCardA {
+    background-image: url(../Images/CardBorders/twoCardA.png);
+}
+
+.TwoCardB {
+    background-image: url(../Images/CardBorders/twoCardB.png);
+}
+
+.Extenders {
+    background-image: url(../Images/CardBorders/extender.png);
+}
+
+.Bricks {
+    background-image: url(../Images/CardBorders/brick.png);
+}
+
+.NonEngine {
+    background-image: url(../Images/CardBorders/enginereqs.png);
+}

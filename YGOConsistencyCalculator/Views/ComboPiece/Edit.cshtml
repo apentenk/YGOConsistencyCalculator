@@ -1,0 +1,24 @@
+﻿@model YGOConsistencyCalculator.Models.ComboPieceDto
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit Combo Piece</h2>
+<form action="/ComboPiece/Update/@Model.ComboPieceId" method="POST">
+    <div>
+        <input type="hidden" name="ComboPieceId" value="@Model.ComboPieceId" />
+    </div>
+    <div>
+        <label>Deck Id:</label> <input type="text" name="DeckId" value="@Model.DeckId" />
+    </div>
+    <div>
+        <label>Card Number:</label> <input type="text" name="CardNumber" value="@Model.CardNumber" />
+    </div>
+    <div>
+        <label>Category:</label> <input type="text" name="Category" value="@Model.Category" />
+    </div>
+    <div>
+        <input type="submit" value="Update Combo Piece" />
+    </div>
+</form>
+

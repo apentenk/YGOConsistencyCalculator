@@ -1,0 +1,11 @@
+﻿@model IEnumerable<YGOConsistencyCalculator.Models.ComboPieceDto>
+@{
+    ViewBag.Title = "List";
+}
+
+<h2>List</h2>
+@foreach(var comboPiece in Model)
+            {
+                <h2><a href="/ComboPiece/Details/@comboPiece.ComboPieceId">@comboPiece.DeckId : @comboPiece.CardNumber</a></h2>
+            }
+

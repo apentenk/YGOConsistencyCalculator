@@ -1,0 +1,18 @@
+﻿@model YGOConsistencyCalculator.Models.CardDto
+@{
+    ViewBag.Title = "Delete Card";
+}
+
+<script src="~/Scripts/card.js"></script>
+<div id="containershow">
+    <nav>
+        <a class="navlink" href="/Card/Details/@Model.Id">Cancel</a>
+    </nav>
+    <h2>Are you sure you want to delete @Model.Name ?</h2>
+    <p>This action cannot be undone.</p>
+    <form method="POST" action="/Card/Delete/@Model.Id">
+        <button class="delbutton">
+            Confirm Delete
+        </button>
+      </form>
+</div>

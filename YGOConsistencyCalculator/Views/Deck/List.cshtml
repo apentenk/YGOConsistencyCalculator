@@ -1,0 +1,11 @@
+﻿@model IEnumerable<YGOConsistencyCalculator.Models.DeckDto>
+@{
+    ViewBag.Title = "List";
+}
+
+<h2>List</h2>
+@foreach(var deck in Model)
+            {
+                <h2><a href="/Deck/Details/@deck.DeckId">@deck.DeckName : @deck.UserId</a></h2>
+            }
+

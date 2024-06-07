@@ -1,0 +1,25 @@
+﻿@model YGOConsistencyCalculator.Models.CardDto
+@{
+    ViewBag.Title = "Details";
+}
+
+<div id="containershow">
+    <nav>
+        <a class="navlink" href="/Card/List">Back To Cards</a>
+        <a class="dellink" href="/Card/DeleteConfirm/@Model.Id">Delete</a>
+        <a class="navlink" href="/Card/Edit/@Model.Id">Update</a>
+    </nav>
+    <h2>@Model.Name</h2>
+</div>
+<img src="~/Images/CardPics/@{@Model.Number}.jpg" />
+<div>ID: @Model.Id</div>
+<div>Number: @Model.Number</div>
+<div>Name: @Model.Name</div>
+<div>Card Frame: @Model.CardFrame</div>
+<div>Card Type: @Model.CardType</div>
+<div>Attribute: @Model.Attribute</div>
+<div>Level: @Model.Level</div>
+<div>Scale: @Model.Scale</div>
+<div>Attack: @Model.Attack</div>
+<div>Defense: @Model.Defense</div>
+

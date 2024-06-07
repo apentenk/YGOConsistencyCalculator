@@ -1,0 +1,42 @@
+﻿@model YGOConsistencyCalculator.Models.CardDto
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit Card</h2>
+<form action="/Card/Update/@Model.Id" method="POST">
+    <div>
+        <input type="hidden" name="Id" value="@Model.Id" />
+    </div>
+    <div>
+        <label>Number:</label> <input type="text" name="Number" value="@Model.Number" />
+    </div>
+    <div>
+        <label>Name:</label> <input type="text" name="Name" value="@Model.Name" />
+    </div>
+    <div>
+        <label>Card Frame:</label> <input type="text" name="CardFrame" value="@Model.CardFrame" />
+    </div>
+    <div>
+        <label>Card Type:</label> <input type="text" name="CardType" value="@Model.CardType" />
+    </div>
+    <div>
+        <label>Attribute:</label> <input type="text" name="Attribute" value="@Model.Attribute" />
+    </div>
+    <div>
+        <label>Level:</label> <input type="text" name="Level" value="@Model.Level" />
+    </div>
+    <div>
+        <label>Scale:</label> <input type="text" name="Scale" value="@Model.Scale" />
+    </div>
+    <div>
+        <label>Attack:</label> <input type="text" name="Scale" value="@Model.Attack" />
+    </div>
+    <div>
+        <label>Defense:</label> <input type="text" name="Scale" value="@Model.Defense" />
+    </div>
+    <div>
+        <input type="submit" value="Update Card" />
+    </div>
+</form>
+

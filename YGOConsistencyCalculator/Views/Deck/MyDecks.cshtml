@@ -1,0 +1,15 @@
+﻿@model string
+@{
+    ViewBag.Title = "MyDecks";
+}
+
+<h2>MyDecks</h2>
+
+<main id="decklists" class="row">
+</main>
+        <script src="~/Scripts/mydecks.js"></script>
+        <script>
+    window.onload = function () {
+        getDecks('@Html.Raw(Model)');
+    }
+        </script>

@@ -1,0 +1,17 @@
+﻿@model YGOConsistencyCalculator.Models.ComboPieceDto
+@{
+    ViewBag.Title = "Delete Card";
+}
+
+<div id="containershow">
+    <nav>
+        <a class="navlink" href="/Card/Details/@Model.ComboPieceId">Cancel</a>
+    </nav>
+    <h2>Are you sure you want to delete @Model.DeckId : @Model.CardNumber ?</h2>
+    <p>This action cannot be undone.</p>
+    <form method="POST" action="/ComboPiece/Delete/@Model.ComboPieceId">
+        <button class="delbutton">
+            Confirm Delete
+        </button>
+        </form>
+</div>

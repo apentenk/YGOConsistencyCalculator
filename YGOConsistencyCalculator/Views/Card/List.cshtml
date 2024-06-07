@@ -1,0 +1,11 @@
+﻿@model IEnumerable<YGOConsistencyCalculator.Models.CardDto>
+@{
+    ViewBag.Title = "List";
+}
+
+<h2>List</h2>
+@foreach(var card in Model)
+            {
+                <h2><a href="/Card/Details/@card.Id">@card.Name</a></h2>
+            }
+
