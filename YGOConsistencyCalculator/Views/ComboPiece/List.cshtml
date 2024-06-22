@@ -4,8 +4,28 @@
 }
 
 <h2>List</h2>
-@foreach(var comboPiece in Model)
-            {
-                <h2><a href="/ComboPiece/Details/@comboPiece.ComboPieceId">@comboPiece.DeckId : @comboPiece.CardNumber</a></h2>
-            }
+
+<nav>
+    <a class="dellink" href="/ComboPiece/New/">New Combo</a>
+</nav>
+
+<table class="table">
+    <thead>
+    <th scope="col">ID</th>
+    <th scope="col">Deck ID</th>
+    <th scope="col">Card Id</th>
+    <th scope="col">Category</th>
+    </thead>
+    <tbody id="table-data">
+        @foreach (var comboPiece in Model)
+        {
+            <tr>
+                <th scope="row"><a href="/ComboPiece/Details/@comboPiece.ComboPieceId">@comboPiece.ComboPieceId</a></th>
+                <td>@comboPiece.DeckId</td>
+                <td>@comboPiece.CardId</td>
+                <td>@comboPiece.Category</td>
+            </tr>
+        }
+    </tbody>
+</table>
 

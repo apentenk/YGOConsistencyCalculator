@@ -12,7 +12,10 @@ namespace YGOConsistencyCalculator.Models
         [Key]
         public int ComboPieceId { get; set; }
 
-        public int CardNumber { get; set; }
+        [ForeignKey("Card")]
+        public int CardId { get; set; }
+
+        public virtual Card Card { get; set; }
 
         [ForeignKey("Deck")]
         public int DeckId { get; set; }
@@ -26,12 +29,19 @@ namespace YGOConsistencyCalculator.Models
         [Key]
         public int ComboPieceId { get; set; }
 
+        public int CardId { get; set; }
+
         public int CardNumber { get; set; }
 
-        [ForeignKey("Deck")]
+        public string CardName { get; set; }
+
         public int DeckId { get; set; }
-        public virtual Deck Deck { get; set; }
+
+        public string DeckName { get; set; }
+
+        public string UserId { get; set; }
 
         public string Category { get; set; }
+
     }
 }

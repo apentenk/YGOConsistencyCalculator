@@ -5,17 +5,17 @@
 
 <h2>New Combo Piece</h2>
 <form action="/ComboPiece/Create" method="POST">
-    <div>
-        <label>Card Number:</label> <input type="text" name="CardNumber" />
+    <div class="mb-3">
+        <label class="form-label" for="DeckId">Deck Id:</label> <input class="form-control" id="DeckId" type="text" name="DeckId"/>
+    </div>
+    <div class="mb-3">
+        <label class="form-label" for="CardNumber">Card Number:</label> <input class="form-control" id="CardNumber" type="text" name="CardNumber"/>
+    </div>
+    <div class="mb-3">
+        <label class="form-label" for="Category">Category:</label> <input class="form-control" id="Category" type="text" name="Category" />
     </div>
     <div>
-        <label>DeckId:</label> <input type="text" name="DeckId" />
-    </div>
-    <div>
-        <label>Category:</label> <input type="text" name="Category" />
-    </div>
-    <div>
-        <input type="submit" value="Add Card"/>
+        <input type="submit" value="Add Card" />
     </div>
 </form>
 

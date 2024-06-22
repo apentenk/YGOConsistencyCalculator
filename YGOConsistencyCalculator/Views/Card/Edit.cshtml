@@ -8,32 +8,41 @@
     <div>
         <input type="hidden" name="Id" value="@Model.Id" />
     </div>
-    <div>
-        <label>Number:</label> <input type="text" name="Number" value="@Model.Number" />
+    <div class="mb-3">
+        <label class="form-label" for="number">Number:</label>
+        <input class="form-control" id="number" type="text" name="Number" value="@Model.Number" />
     </div>
-    <div>
-        <label>Name:</label> <input type="text" name="Name" value="@Model.Name" />
+    <div class="mb-3">
+        <label class="form-label" for="name">Name:</label>
+        <input class="form-control" id="name" type="text" name="Name" value="@Model.Name" />
     </div>
-    <div>
-        <label>Card Frame:</label> <input type="text" name="CardFrame" value="@Model.CardFrame" />
+    <div class="mb-3">
+        <label class="form-label" for="cardFrame">Card Frame:</label>
+        <input class="form-control" id="cardFrame" type="text" name="CardFrame" value="@Model.CardFrame"/>
     </div>
-    <div>
-        <label>Card Type:</label> <input type="text" name="CardType" value="@Model.CardType" />
+    <div class="mb-3">
+        <label class="form-label" for="cardType">Card Type:</label>
+        <input class="form-control" id="cardType" type="text" name="CardType" value="@Model.CardType"/>
     </div>
-    <div>
-        <label>Attribute:</label> <input type="text" name="Attribute" value="@Model.Attribute" />
+    <div class="mb-3">
+        <label class="form-label" for="attribute">Attribute:</label>
+        <input class="form-control" id="attribute" type="text" name="Attribute" value="@Model.Attribute"/>
     </div>
-    <div>
-        <label>Level:</label> <input type="text" name="Level" value="@Model.Level" />
+    <div class="mb-3">
+        <label class="form-label" for="level">Level:</label>
+        <input class="form-control" id="level" type="number" name="Level" value="@Model.Level"/>
     </div>
-    <div>
-        <label>Scale:</label> <input type="text" name="Scale" value="@Model.Scale" />
+    <div class="mb-3">
+        <label class="form-label" for="scale">Scale:</label>
+        <input class="form-control" id="scale" type="number" name="Scale" value="@Model.Scale"/>
     </div>
-    <div>
-        <label>Attack:</label> <input type="text" name="Scale" value="@Model.Attack" />
+    <div class="mb-3">
+        <label class="form-label" for="attack">Attack:</label>
+        <input class="form-control" id="attack" type="number" name="Attack" value="@Model.Attack"/>
     </div>
-    <div>
-        <label>Defense:</label> <input type="text" name="Scale" value="@Model.Defense" />
+    <div class="mb-3">
+        <label class="form-label" for="defense">Defense:</label>
+        <input class="form-control" id="defense" type="number" name="Defense" value="@Model.Defense"/>
     </div>
     <div>
         <input type="submit" value="Update Card" />

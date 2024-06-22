@@ -5,34 +5,43 @@
 
 <h2>New Card</h2>
 <form action="/Card/Create" method="POST">
-    <div>
-        <label>Number:</label> <input type="text" name="Number" />
+    <div class="mb-3">
+        <label class="form-label" for="number">Number:</label>
+        <input class="form-control" id="number" type="text" name="Number" />
     </div>
-    <div>
-        <label>Name:</label> <input type="text" name="Name" />
+    <div class="mb-3">
+        <label class="form-label" for="name">Name:</label>
+        <input class="form-control" id="name" type="text" name="Name" />
     </div>
-    <div>
-        <label>Card Frame:</label> <input type="text" name="CardFrame" />
+    <div class="mb-3">
+        <label class="form-label" for="cardFrame">Card Frame:</label>
+        <input class="form-control" id="cardFrame" type="text" name="CardFrame" />
     </div>
-    <div>
-        <label>Card Type:</label> <input type="text" name="CardType" />
+    <div class="mb-3">
+        <label class="form-label" for="cardType">Card Type:</label>
+        <input class="form-control" id="cardType" type="text" name="CardType" />
     </div>
-    <div>
-        <label>Attribute:</label> <input type="text" name="Attribute" />
+    <div class="mb-3">
+        <label class="form-label" for="attribute">Attribute:</label>
+        <input class="form-control" id="attribute" type="text" name="Attribute" />
     </div>
-    <div>
-        <label>Level:</label> <input type="text" name="Level" />
+    <div class="mb-3">
+        <label class="form-label" for="level">Level:</label>
+        <input class="form-control" id="level" type="number" name="Level" />
     </div>
-    <div>
-        <label>Scale:</label> <input type="text" name="Scale" />
+    <div class="mb-3">
+        <label class="form-label" for="scale">Scale:</label>
+        <input class="form-control" id="scale" type="number" name="Scale" />
     </div>
-    <div>
-        <label>Attack:</label> <input type="text" name="Attack" />
+    <div class="mb-3">
+        <label class="form-label" for="attack">Attack:</label>
+        <input class="form-control" id="attack" type="number" name="Attack" />
     </div>
-    <div>
-        <label>Defense:</label> <input type="text" name="Defense" />
+    <div class="mb-3">
+        <label class="form-label" for="defense">Defense:</label>
+        <input class="form-control" id="defense" type="number" name="Defense" />
     </div>
-    <div>
+    <div class="mb-3">
         <input type="submit" value="Add Card"/>
     </div>
 </form>

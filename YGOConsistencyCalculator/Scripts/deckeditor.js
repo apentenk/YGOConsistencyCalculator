@@ -1,7 +1,8 @@
 ﻿var MainDeck = []; //Array for holding cards currently in the main deck
 var ExtraDeck = [];//Array for holding cards currently in the main deck
 var DeckCombo; //Combo Schema object for holding data about current combo pieces
-var cardId = {}; //Used for storing combo id values****
+var cardId = {}; //Used for storing combo id values
+var Combos;
 const APIURL = "https://localhost:44386/api/"
 
 //List of cards types that belong in the extra Deck
@@ -11,23 +12,19 @@ function LoadDeck(id) {
 }
 
 function createEventListeners(DeckId, UserId) {
-    $(document).on("mouseenter", ".card-container", function () {
+    /*$(document).on("mouseenter", ".card-container", function () {
         cardHover(this); //display larger card image on hover
-    });
+    });*/
 
-    $(document).on("click", ".main-deck-card", function () {
+    $(document).on("click", "#main-deck>.deck-card", function () {
         mainDeckCardButtonLeftClick(this); //assign card combo value
     });
 
-    $(document).on("contextmenu", ".main-deck-card", function () {
+    $(document).on("contextmenu", ".deck-card", function () {
         mainDeckCardButtonRightClick(this); //remove card from main deck
         return false;
     });
 
-    $(document).on("contextmenu", ".extra-deck-card", function () {
-        mainDeckCardButtonRightClick(this); //remove card from extra deck
-        return false;
-    });
 
     $(document).on("click", ".search-results-card", function () {
         searchResultCardButtonLeftClick(this); //add card to main deck
@@ -41,7 +38,6 @@ function createEventListeners(DeckId, UserId) {
 
     $('#save-button').on('click', function () {
         UpdateDeck(DeckId, UserId); //saves deck information
-        UpdateCombos(DeckId); //saves combo information
     });
 }
 
@@ -50,17 +46,19 @@ function mainDeckCardButtonLeftClick(element) {
     if ($("input[type=radio]:checked").length === 1) {
         let comboPieceCategory = $("input[type=radio]:checked").val();
         let result = 2;
-        let queryString = '.main-deck-card[data-id="' + element.getAttribute("data-id") + '"]';
+        let queryString = '.deck-card[data-id="' + element.getAttribute("data-id") + '"]';
         if (ComboPieces.includes(comboPieceCategory) && element.parentNode.id === "main-deck") {
-            result = DeckCombo.updateValue(comboPieceCategory, element.getAttribute("data-id"), $(queryString).length);
+            result = DeckCombo.updateValue(comboPieceCategory, parseInt(element.getAttribute("data-id")), $(queryString).length);
         }
-
+        let newQuery = queryString + ">.combo-category";
         if (result === 0) {
-            $(queryString).addClass(comboPieceCategory);
+            $(newQuery).addClass(comboPieceCategory);
+            $(newQuery).text(comboPieceCategory);
             updateChances();
         }
         else if (result === 1) {
-            $(queryString).removeClass(comboPieceCategory);
+            $(newQuery).removeClass(comboPieceCategory);
+            $(newQuery).text("");
             updateChances();
         }
     }
@@ -68,43 +66,46 @@ function mainDeckCardButtonLeftClick(element) {
 
 //Removes the clicked card from the deck, and from the combo
 function mainDeckCardButtonRightClick(element) {
-    let cardNumber = element.getAttribute("data-id");
+    let cardId = element.getAttribute("data-id");
+    let card = {
+        CardId: parseInt(cardId),
+        Category: DeckCombo.getCategory(cardId)
+    }
     element.remove();
-    let index = MainDeck.findIndex(id => id === cardNumber);
-    if (index > -1) {
-        MainDeck.splice(index, 1);
-    }
-    if (!MainDeck.includes(cardNumber)) {
-        category = DeckCombo.getCategory();
-        if (category !== "EngineReq") {
-            DeckCombo.removeCard(category, value);
-        }
-    }
+    DeckCombo.removeCard(card);
     updateChances();
 }
 
 //Adds the card to the main or extra deck when clicked
 function searchResultCardButtonLeftClick(element) {
-    let cardNumber = element.getAttribute("data-id");
-    if (element.classList.contains("extra-deck-card")) {
-        if (ExtraDeck.length <= 15 && ExtraDeck.filter(x => x === cardNumber).length < 3) {
-            addPictures("extra-deck", [cardNumber]);
-        }
-    } else {
-        if (MainDeck.length <= 60 && MainDeck.filter(x => x === cardNumber).length < 3) {
-            console.log(cardNumber);
-            addPictures("main-deck", [cardNumber]);
-            MainDeck.push(cardNumber);
+    let card = {
+        CardId: parseInt(element.getAttribute("data-id")),
+        CardNumber: element.getAttribute("data-Number"),
+    }
+    let cardNumber = element.getAttribute("data-Number");
+    if (DeckCombo.canAddCard(card.CardId)) {
+        if (element.classList.contains("extra-deck")) {
+            card.Category = "Extra";
+            DeckCombo.addCard(card);
+            let cardPicture = createCardContainer(card.CardId, card.CardNumber, 70);
+            cardPicture.classList.add("deck-card");
+            document.getElementById("extra-deck").appendChild(cardPicture);
+        } else {
+            card.Category = "Engine";
+            DeckCombo.addCard(card);
+            let cardPicture = createCardContainer(card.CardId, card.CardNumber, 90);
+            cardPicture.classList.add("deck-card");
+            document.getElementById("main-deck").appendChild(cardPicture);
             updateChances();
         }
     }
 }
 
-//Displays larger scale of card when hovered
+/*Displays larger scale of card when hovered
 function cardHover(element) {
     let container = document.getElementById("card-view");
     if (container.firstElementChild) {
-        if (container.firstElementChild.getAttribute("data-id") !== element.getAttribute("data-id")) {
+        if (container.firstElementChild.getAttribute("data-number") !== element.getAttribute("data-number")) {
             container.replaceChildren();
         }
         else {
@@ -112,32 +113,36 @@ function cardHover(element) {
         }
     }
     let bigCard = document.createElement("img");
-    bigCard.src = "https://localhost:44386/Images/CardPics/" + element.getAttribute("data-id") + ".jpg";
+    bigCard.src = "https://localhost:44386/Images/CardPics/" + element.getAttribute("data-number") + ".jpg";
     bigCard.classList.add('bigCard');
-    bigCard.setAttribute("data-id", element.getAttribute("data-id"))
+    bigCard.setAttribute("data-number", element.getAttribute("data-number"))
     container.appendChild(bigCard);
-}
+}*/
 
 //Gets the combo pieces for the deck and assigns them their values
 function getComboSchema(id) {
-    let URL = APIURL + "ComboData/GetComboPieces/" + id;
+    let URL = APIURL + "ComboData/GetCombosInDeck/" + id;
     var xhr = new XMLHttpRequest();
 
     xhr.open("GET", URL, true);
     xhr.onreadystatechange = function () {
         if (xhr.readyState === 4 && xhr.status === 200) {
-            let deckCards = (JSON.parse(xhr.responseText));
-                DeckCombo = new ComboSchema(MainDeck);
-                newDeck = true;
-            if(deckCards.length > 0) {
-                for (key in deckCards) {
-                    let card = deckCards[key];
-                    if (card.Category !== "EngineReq" && MainDeck.indexOf(card.CardNumber.toString() > -1)) {
-                        DeckCombo.updateValue(card.Category, card.CardNumber.toString());
-                        let queryString = '.main-deck-card[data-id="' + card.CardNumber + '"]';
-                        $(queryString).addClass(card.Category);
+            Combos = (JSON.parse(xhr.responseText));
+            DeckCombo = new ComboSchema();
+            newDeck = true;
+            if (Combos.length > 0) {
+                for (key in Combos) {
+                    let card = Combos[key];
+                    if (card.Category === "Extra") {
+                        let cardPicture = createCardContainer(card.CardId, card.CardNumber, 70);
+                        cardPicture.classList.add('deck-card');
+                        document.getElementById("extra-deck").appendChild(cardPicture);
+                    } else {
+                        let cardPicture = createCardContainer(card.CardId, card.CardNumber, 90, card.Category);
+                        cardPicture.classList.add('deck-card');
+                        document.getElementById("main-deck").appendChild(cardPicture);
                     }
-                    cardId[card.CardNumber] = card.ComboPieceId;
+                    DeckCombo.addCard(card);
                 }
                 newDeck = false;
             }
@@ -165,8 +170,8 @@ function UpdateDeck(DeckId, UserId) {
     let deck = {
         DeckId: DeckId,
         UserId: UserId,
-        DeckName: "My Deck",
-        DeckList: MainDeck.join(" ") + " #extra " +ExtraDeck.join(" "),
+        DeckName: document.getElementById("deck-name").value,
+        DeckList: "",
         StarterChance: DeckCombo.getStarterChance(),
         OneCardChance: DeckCombo.getOneCardChance(),
         TwoCardChance: DeckCombo.getTwoCardChance(),
@@ -180,7 +185,7 @@ function UpdateDeck(DeckId, UserId) {
     xhr.setRequestHeader("Content-type", "application/json");
     xhr.onreadystatechange = function () {
         if (xhr.readyState === 4 && xhr.status === 204) {
-            //window.location.replace("../MyDecks");
+            UpdateCombos(DeckId);
         }
     }
     xhr.send(JSON.stringify(deck));
@@ -188,19 +193,15 @@ function UpdateDeck(DeckId, UserId) {
 
 //Updates the Combo pieces of the deck in the database
 function UpdateCombos(id) {
+    let fullDeck = DeckCombo.getDeckWithCombo();
     let ComboPieces = [];
-    let ComboPiecesNumbers = [];
-    for (let i = 0; i < MainDeck.length; i++) {
-        if (ComboPiecesNumbers.indexOf(MainDeck[i]) < 0) {
-            let comboPiece = {
-                ComboPieceId: cardId[MainDeck[i]],
-                CardNumber: MainDeck[i],
-                DeckId: id,
-                Category: DeckCombo.getCategory(MainDeck[i])
-            }
-            ComboPieces.push(comboPiece);
-            ComboPiecesNumbers.push(MainDeck[i]);
+    for (let i = 0; i < fullDeck.length; i++) {
+        let comboPiece = {
+            CardId: fullDeck[i].CardId,
+            DeckId: id,
+            Category: fullDeck[i].Category
         }
+        ComboPieces.push(comboPiece);
     }
     updateComboPieces(id, ComboPieces);
 }
@@ -214,7 +215,7 @@ function updateComboPieces(id, comboPieces) {
     xhr.setRequestHeader("Content-type", "application/json");
     xhr.onreadystatechange = function () {
         if (xhr.readyState === 4 && xhr.status === 204) {
-            //window.location.replace("MyDecks");
+            window.location.replace("../MyDecks");
         }
     }
     xhr.send(JSON.stringify(comboPieces));
@@ -237,7 +238,7 @@ function getSearchResults(element) {
                         $("#search-results").empty();
                         for (key in searchResults) {
                             let card = searchResults[key];
-                            addSearchPictures(card.Number, card.CardFrame);
+                            addSearchPictures(card.Id, card.Number, card.CardFrame);
                         }
                     }
                 }
@@ -257,10 +258,10 @@ function splitDeck(fullDeck) {
 }
 
 //Creates DOM elements for view Search Results
-function addSearchPictures(number, cardFrame) {
-    let cardContainer = createCardContainer(number);
+function addSearchPictures(id, number, cardFrame) {
+    let cardContainer = createCardContainer(id, number, 80);
     let containerName = "search-results";
-    if (ExtraDeckCards.indexOf(cardFrame) > 0) {
+    if (ExtraDeckCards.indexOf(cardFrame) >= 0) {
         cardContainer.classList.add("extra-deck");
     }
     cardContainer.classList.add(containerName + "-card");
@@ -272,7 +273,7 @@ function addSearchPictures(number, cardFrame) {
 function addPictures(containerName, cards) {
     const container = document.getElementById(containerName);
     for (let i = 0; i < cards.length; i++) {
-        let cardContainer = createCardContainer(cards[i]);
+        let cardContainer = createCardContainer(cards[i].CardId, cards[i].CardNumber);
         cardContainer.classList.add("main-deck-card");
         
         container.appendChild(cardContainer);
@@ -280,15 +281,24 @@ function addPictures(containerName, cards) {
 }
 
 //Creates a container to hold card images
-function createCardContainer(card) {
+function createCardContainer(id, number, width, cardCategory) {
     let cardContainer = document.createElement("div");
     cardContainer.classList.add("card-container");
     cardContainer.classList.add("col");
     cardContainer.classList.add("m-1");
     let cardImage = document.createElement("img");
-    cardImage.src = "https://localhost:44386//Images/CardPics/" + card + ".jpg";
-    cardImage.width = 76;
+    let imagesource = "/Content/Images/CardPics/" + number + ".jpg";
+    cardImage.src = imagesource;
+    cardImage.width = width;
+    let category = document.createElement("div");
+    category.classList.add("combo-category");
+    if (cardCategory !== undefined && cardCategory !== "Engine"){
+        category.classList.add(cardCategory);
+        category.innerText = cardCategory;
+    }
     cardContainer.appendChild(cardImage);
-    cardContainer.setAttribute("data-id", card);
+    cardContainer.appendChild(category);
+    cardContainer.setAttribute("data-id", id);
+    cardContainer.setAttribute("data-number", number);
     return cardContainer;
 }

@@ -4,8 +4,37 @@
 }
 
 <h2>List</h2>
-@foreach(var deck in Model)
-            {
-                <h2><a href="/Deck/Details/@deck.DeckId">@deck.DeckName : @deck.UserId</a></h2>
-            }
+
+<nav>
+    <a class="dellink" href="/Deck/New/">New Deck</a>
+</nav>
+
+<table class="table">
+    <thead>
+    <th scope="col">ID</th>
+    <th scope="col">Deck Name</th>
+    <th scope="col">User Id</th>
+    <th scope="col">Starter Chance</th>
+    <th scope="col">One Card Chance</th>
+    <th scope="col">Two Card Chance</th>
+    <th scope="col">Extender Chance</th>
+    <th scope="col">Non-Engine Chance</th>
+    </thead>
+    <tbody id="table-data">
+        @foreach (var deck in Model)
+        {
+            <tr>
+        <th scope="row"><a href="/Deck/Details/@deck.DeckId">@deck.DeckId</a></th>
+        <td>@deck.DeckName</td>
+        <td>@deck.UserId</td>
+        <td>@deck.StarterChance</td>
+        <td>@deck.OneCardChance</td>
+        <td>@deck.TwoCardChance</td>
+        <td>@deck.ExtenderChance</td>
+        <td>@deck.EngineReqChance</td>
+                </tr>
+    }
+        </tbody>
+    </table>
+
 

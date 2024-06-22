@@ -20,3 +20,24 @@
 <div>Extender Combo Chance: @Model.ExtenderChance</div>
 <div>NonEngine Combo Chance: @Model.EngineReqChance</div>
 
+<div>
+    <h3>Cards In Deck</h3>
+    <table class="table">
+        <thead>
+            <th scope="col">ID</th>
+            <th scope="col">CardId</th>
+            <th scope="col">CardName</th>
+            <th scope="col">Category</th>
+        </thead>
+        <tbody id="table-data">
+
+        </tbody>
+    </table>
+</div>
+
+<script src="~/Scripts/admindeck.js"></script>
+<script>
+    window.onload = function () {
+        getCardsInDeck(@Html.Raw(Model.DeckId));
+    }
+</script>

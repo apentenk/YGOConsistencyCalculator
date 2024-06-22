@@ -12,8 +12,8 @@ function createDeck(id) {
     xhr.setRequestHeader("Content-Type", "application/json");
     xhr.onreadystatechange = function () {
         if (xhr.readyState === 4 && xhr.status === 200) {
-            let id = JSON.parse(xhr.responseText);
-            window.location.replace(("EditDeck/" + id));
+            let deckid = JSON.parse(xhr.responseText);
+            window.location.replace(("EditDeck/" + deckid));
         }
     }
     xhr.send(JSON.stringify(deck));
@@ -29,41 +29,73 @@ function getDecks(id) {
         if (xhr.readyState === 4 && xhr.status === 200) {
             let decks = (JSON.parse(xhr.responseText));
             const deckListcontainer = document.getElementById("decklists");
-            if (decks.length > 0) {
-                for (key in decks) {
-                    let deck = decks[key];
-                    let values = [];
-                    values.push(deck.DeckName);
-                    values.push(deck.StarterChance);
-                    values.push(deck.OneCardChance);
-                    values.push(deck.TwoCardChance);
-                    values.push(deck.ExtenderChance);
-                    values.push(deck.EngineReqChance);
-                    let container = document.createElement("section");
-                    container.classList.add("col");
-                    container.appendChild(showDeck(deck.DeckId, values));
-                    deckListcontainer.appendChild(container);
-                }
+            for (let i = 0; i < decks.length; i++) {
+                let deck = decks[i];
+                let query = "#deck-" + (i + 1);
+                $(query).off();
+                $(query + ">.card-title>h2").text(deck.DeckName);
+                $(query + ">.card-effect").append(createEffectStat("Combo Chance:", deck.StarterChance))
+                $(query + ">.card-effect").append(createEffectStat("One-Card Combo Chance:", deck.OneCardChance))
+                $(query + ">.card-effect").append(createEffectStat("Two-Card Combo Chance:", deck.TwoCardChance))
+                $(query + ">.card-effect").append(createEffectStat("Combo/Extender Chance:", deck.ExtenderChance))
+                $(query + ">.card-effect").append(createEffectStat("Combo/NonEngine Chance:", deck.EngineReqChance))
+
+                let navContainer = document.createElement('div');
+                navContainer.classList.add("card-stats");
+                navContainer.append(createCardLink("Edit Deck", "/Deck/EditDeck/" + deck.DeckId));
+                navContainer.append(createCardLink("Delete Deck", "/Deck/DeleteConfirm/" + deck.DeckId));
+                $(query + ">.card-effect").append(navContainer);
+                fillDeckPreview($(query+">.card-img"),deck.DeckId);
             }
-            if (decks.length < 3) {
-                console.log("here");
-                for (i = 0; i < (3 - decks.length); i++) {
-                    let container = document.createElement("section");
-                    container.classList.add("col");
-                    let newDeck = document.createElement("button");
-                    newDeck.textContent = "New Deck";
-                    newDeck.addEventListener('click', function () {
-                        createDeck(id);
-                    });
-                    container.appendChild(newDeck);
-                    deckListcontainer.appendChild(container);
-                }
-            }
+
         }
     }
     xhr.send();
 }
 
+function createEffectStat(statName, statValue) {
+    let container = document.createElement("div");
+    container.classList.add("effect-stat");
+    let name = document.createElement('p');
+    name.innerText = statName;
+    let value = document.createElement('p');
+    value.innerText = statValue + "%";
+    container.appendChild(name);
+    container.appendChild(value);
+    return container;
+}
+
+function createCardLink(linkName, url) {
+    let anchor = document.createElement('a');
+    anchor.href = url;
+    anchor.innerText = linkName;
+    return anchor
+}
+
+function fillDeckPreview(container, DeckId) {
+    const URL = "https://localhost:44386/api/ComboData/GetCombosInDeck/" + DeckId;
+    var xhr = new XMLHttpRequest();
+
+    xhr.open("GET", URL, true);
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            let Combos = (JSON.parse(xhr.responseText));
+            if (Combos.length > 0) {
+                for (key in Combos) {
+                    let card = Combos[key];
+                    let cardPicture = document.createElement("img");
+                    cardPicture.src = "/Content/Images/CardPics/" + card.CardNumber + ".jpg";
+                    cardPicture.width = "30";
+                    if (card.Category !== "Extra") {
+                        container.append(cardPicture);
+                    }
+                }
+            }
+        }
+    }
+
+    xhr.send();
+}
 //Deletes a user's deck
 //Will be used to delete the deck once I add confirmation without redirecting to another page
 function deleteDeck(id) {

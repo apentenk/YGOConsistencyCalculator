@@ -5,19 +5,19 @@
 
 <h2>Edit Combo Piece</h2>
 <form action="/ComboPiece/Update/@Model.ComboPieceId" method="POST">
-    <div>
+    <div class="mb-3">
         <input type="hidden" name="ComboPieceId" value="@Model.ComboPieceId" />
     </div>
-    <div>
-        <label>Deck Id:</label> <input type="text" name="DeckId" value="@Model.DeckId" />
+    <div class="mb-3">
+        <label class="form-label" for="DeckId">Deck Id:</label> <input class="form-control" id="DeckId" type="text" name="DeckId" value="@Model.DeckId" />
     </div>
-    <div>
-        <label>Card Number:</label> <input type="text" name="CardNumber" value="@Model.CardNumber" />
+    <div class="mb-3">
+        <label class="form-label" for="CardNumber">Card Number:</label> <input class="form-control" id="CardNumber" type="text" name="CardNumber" value="@Model.CardNumber" />
     </div>
-    <div>
-        <label>Category:</label> <input type="text" name="Category" value="@Model.Category" />
+    <div class="mb-3">
+        <label class="form-label" for="Category">Category:</label> <input class="form-control" id="Category" type="text" name="Category" value="@Model.Category" />
     </div>
-    <div>
+    <div class="mb-3">
         <input type="submit" value="Update Combo Piece" />
     </div>
 </form>

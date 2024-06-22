@@ -1,0 +1,80 @@
+Id,Value.number,Value.name,Value.CardFrame,Value.CardType,Value.Level,Value.Scale,Value.Attack,Value.Defense,Value.Attribute
+12595,67752972,Wattkyuki,synchro,Thunder,8,-1,0,0,LIGHT
+12596,45801022,Wattlemur,effect,Thunder,2,-1,0,0,LIGHT
+12597,32548609,Wattmole,effect,Thunder,3,-1,0,0,LIGHT
+12598,81896771,Wattpheasant,effect,Thunder,4,-1,0,0,LIGHT
+12599,56577312,Wattrain,spell,Normal,0,-1,0,0,
+12600,23274061,Wattsquirrel,effect,Thunder,3,-1,0,0,LIGHT
+12601,81028112,Wattsychic Fighter,effect,Psychic,3,-1,0,0,LIGHT
+12602,51303014,Wattsychic Fighting Porter,spell,Quick-Play,0,-1,0,0,
+12603,10113611,Wattuna,effect,Thunder,4,-1,0,0,LIGHT
+12604,12296376,Wattwoodpecker,effect,Thunder,3,-1,0,0,LIGHT
+12605,38992735,Wave-Motion Cannon,spell,Continuous,0,-1,0,0,
+12606,63665606,Wave-Motion Inferno,spell,Continuous,0,-1,0,0,
+12607,31222701,Wavering Eyes,spell,Quick-Play,0,-1,0,0,
+12608,91880660,Way Where There's a Will,spell,Field,0,-1,0,0,
+12609,10035717,Weapon Change,spell,Continuous,0,-1,0,0,
+12610,37243151,Weather Control,normal,Fairy,2,-1,0,0,LIGHT
+12611,72053645,Weather Report,effect,Aqua,4,-1,0,0,WATER
+12612,23147658,Weathering Soldier,effect,Rock,4,-1,0,0,EARTH
+12613,71384012,Wee Witch's Apprentice,link,Spellcaster,2,-1,0,0,DARK
+12614,28604635,Weed Out,trap,Normal,0,-1,0,0,
+12615,5763020,Weeping Idol,effect,Rock,2,-1,0,0,DARK
+12616,39103226,Weighbridge,trap,Normal,0,-1,0,0,
+12617,42548470,Weights & Zenmaisures,spell,Normal,0,-1,0,0,
+12618,96576187,Weiss Lightsworn Archfiend,effect,Fiend,4,-1,0,0,LIGHT
+12619,5380979,Welcome Labrynth,trap,Normal,0,-1,0,0,
+12620,300302076,Welcome to the Jungle,skill,Tania,0,-1,0,0,
+12621,96643568,Wetha,normal,Aqua,3,-1,0,0,WATER
+12622,2084239,Wetlands,spell,Field,0,-1,0,0,
+12623,65961085,Wheel of Prophecy,effect,Spellcaster,8,-1,0,0,DARK
+12624,60283232,Wheel Synchron,effect,Machine,5,-1,0,0,LIGHT
+12625,51405049,Where Arf Thou?,spell,Normal,0,-1,0,0,
+12626,91996584,Whiptail Crow,normal,Fiend,4,-1,0,0,DARK
+12627,91822647,Whirlwind of Gusto,trap,Normal,0,-1,0,0,
+12628,15090429,Whirlwind Prodigy,effect,Fairy,4,-1,0,0,WIND
+12629,93730409,Whirlwind Weasel,effect,Beast,3,-1,0,0,WIND
+12630,62173132,Whispers of the Sinful Spoils,spell,Quick-Play,0,-1,0,0,
+12631,57964143,White Arbitration,trap,Continuous,0,-1,0,0,
+12632,89907227,White Aura Bihamut,synchro,Fish,10,-1,0,0,WATER
+12633,78229193,White Aura Dolphin,synchro,Fish,6,-1,0,0,WATER
+12634,63731062,White Aura Monoceros,synchro,Fish,7,-1,0,0,WATER
+12635,46956301,White Aura Porpoise,synchro,Fish,6,-1,0,0,WATER
+12636,5614808,White Aura Whale,synchro,Fish,8,-1,0,0,WATER
+12637,21579049,White Circle Reef,spell,Normal,0,-1,0,0,
+12638,92409659,White Dolphin,normal,Fish,2,-1,0,0,WATER
+12639,99212922,White Dragon Ninja,effect,Dragon,7,-1,0,0,LIGHT
+12640,9786492,White Dragon Ritual,spell,Ritual,0,-1,0,0,
+12641,99234526,White Dragon Wyverburster,effect,Dragon,4,-1,0,0,LIGHT
+12642,3557275,White Duston,normal,Fiend,1,-1,0,0,LIGHT
+12643,18756904,White Elephant's Gift,spell,Normal,0,-1,0,0,
+12644,43487744,White Hole,trap,Normal,0,-1,0,0,
+12645,62487836,White Howling,trap,Normal,0,-1,0,0,
+12646,40352445,White Knight of Dogmatika,ritual,Spellcaster,8,-1,0,0,LIGHT
+12647,15150365,White Magical Hat,effect,Spellcaster,3,-1,0,0,LIGHT
+12648,81383947,White Magician Pikeru,effect,Spellcaster,2,-1,0,0,LIGHT
+12649,19885332,White Mirror,spell,Normal,0,-1,0,0,
+12650,32825095,White Moray,effect,Fish,2,-1,0,0,WATER
+12651,79473793,White Night Dragon,effect,Dragon,8,-1,0,0,WATER
+12652,20193924,White Night Queen,effect,Fairy,7,-1,0,0,LIGHT
+12653,1571945,White Ninja,effect,Warrior,4,-1,0,0,LIGHT
+12654,98024118,White Potan,effect,Fairy,1,-1,0,0,LIGHT
+12655,91434208,White Reincarnation,spell,Continuous,0,-1,0,0,
+12656,48654323,White Relic of Dogmatika,ritual,Spellcaster,4,-1,0,0,LIGHT
+12657,84335863,White Rose Cloister,spell,Field,0,-1,0,0,
+12658,12213463,White Rose Dragon,effect,Dragon,4,-1,0,0,DARK
+12659,98684051,White Sardine,effect,Fish,2,-1,0,0,WATER
+12660,11426487,White Steed of the Floral Knights,effect,Beast,6,-1,0,0,WIND
+12661,49930315,White Stingray,effect,Fish,4,-1,0,0,WATER
+12662,52596406,White Sunfish,effect,Fish,4,-1,0,0,WATER
+12663,28348939,White Tiger Summoner,effect,Spellcaster,3,-1,0,0,EARTH
+12664,49306994,White Veil,spell,Equip,0,-1,0,0,
+12665,11067666,White Wing Magician,effect_pendulum,Spellcaster,4,1,0,0,WIND
+12666,73891874,White-Horned Dragon,effect,Dragon,6,-1,0,0,DARK
+12667,31374201,Whitebeard the Plunder Patroll Helm,effect,Fiend,4,-1,0,0,WATER
+12668,63509474,Whitefish Salvage,spell,Continuous,0,-1,0,0,
+12669,27103517,Wicked Acolyte Chilam Sabak,effect,Reptile,8,-1,0,0,DARK
+12670,2957055,Wicked Dragon with the Ersatz Head,normal,Dragon,3,-1,0,0,WIND
+12671,12965762,Wicked Plant Token,token,Plant,1,-1,0,0,EARTH
+12672,23440062,Wicked Rebirth,trap,Continuous,0,-1,0,0,
+12673,65810490,Wicked Token,token,Fiend,4,-1,0,0,DARK

@@ -3,51 +3,17 @@
     ViewBag.Title = "Edit Deck";
 }
 
-<header class="row">
-    <div class="col">
-    <button >Back</button>
+<header class="deck-editor">
+    <div class="w-50">
+    <input class="w-100" type="text" value=@Model.DeckName id="deck-name">
         </div>
-    <div class="col-10">
-    <h1>@Model.DeckName</h1>
-        </div>
-    <div class="col">
+    <div class="w-25 text-lg-end">
     <button id="save-button">Save</button>
         </div>
 </header>
-<main class="row">
-    <section class="col">
-        <div class="row h-100">
-        <div id="card-view">
-
-        </div>
-        <div>
-            <div class="row">
-                <h4>Deck Statistics</h4>
-            </div>
-            <div class="row">
-                <h6 class="col-9">Combo Chance:</h6>
-                <h6 id="comboChance" class="col"></h6>
-            </div>
-            <div class="row">
-                <h6 class="col-9">One-Card Combo Chance:</h6>
-                <h6 id="oneComboChance" class="col"></h6>
-            </div>
-            <div class="row">
-                <h6 class="col-9">Two-Card Combo Chance:</h6>
-                <h6 id="twoComboChance" class="col"></h6>
-            </div>
-            <div class="row">
-                <h6 class="col-9">Combo and Extender Chance:</h6>
-                <h6 id="extenderChance" class="col"></h6>
-            </div>
-            <div class="row">
-                <h6 class="col-9">Combo and NonEngine Chance:</h6>
-                <h6 id="nonEngineChance" class="col"></h6>
-            </div>
-        </div>
-            </div>
-    </section>
-    <section id="deckview" class="col-7" >
+<main class="deck-editor">
+    <section id="deckview" class="cardlist-view" >
+        <div class="deck-title">
             <div class="comboContent row">
                 <div class="col m-1" id="OneCard">
                     <label>One Card <input type="radio" name="combo" value="OneCard"></label>
@@ -66,26 +32,54 @@
                 </div>
                 <div class="col m-1" id="NonEngine">
                     <label>Non-Engine <input type="radio" name="combo" value="NonEngine"></label>
-                </div>
-                </div>
-                <div id="main-deck" class="row row-cols-auto">
+                </div>    
             </div>
-        <div id="extra-deck" class="row row-cols-auto">
         </div>
-    </section>
-    <section class="col">
-        <div>
-        <input type="text" id="search" placeholder="Card Name or Archtype">
-        <button>Search</button>
+        <div class="deck-img">
+                <div id="main-deck" class="row-cols-auto">
             </div>
-        <div id="search-results" class="row"></div>
+        </div>
+        <div class="deck-effect">
+        <div id="extra-deck" class="row-cols-auto">
+        </div>
+            </div>
+    </section>
+    <section class="decklist-view extended">
+        <div class="card-title">
+            <input type="text" id="search" class="clear-input" placeholder="Search cards...">
+        </div>
+        <div class="card-type">
+            <button>Search</button>
+        </div>
+        <div id="search-results" class="card-img row-cols-auto"></div>
+        <div class="card-effect">
+            <div class="effect-stat">
+                <p>Combo Chance:</p>
+                <p id="comboChance"></p>
+            </div>
+            <div class="effect-stat">
+                <p>One-Card Combo Chance:</p>
+                <p id="oneComboChance"></p>
+            </div>
+            <div class="effect-stat">
+                <p>Two-Card Combo Chance:</p>
+                <p id="twoComboChance"></p>
+            </div>
+            <div class="effect-stat">
+                <p>Combo and Extender Chance:</p>
+                <p id="extenderChance"></p>
+            </div>
+            <div class="effect-stat">
+                <p>Combo and NonEngine Chance:</p>
+                <p id="nonEngineChance"></p>
+            </div>
+        </div>
     </section>
 </main>
 <script src="~/Scripts/ComboSchema.js"></script>
 <script src="~/Scripts/deckeditor.js"></script>
 <script>
     window.onload = function () {
-        splitDeck('@Html.Raw(Model.DeckList)');
         getComboSchema(@Html.Raw(Model.DeckId));
         createEventListeners(@Html.Raw(Model.DeckId),'@Html.Raw(Model.UserId)');
     }

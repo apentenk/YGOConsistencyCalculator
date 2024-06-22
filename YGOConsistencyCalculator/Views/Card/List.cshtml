@@ -2,10 +2,38 @@
 @{
     ViewBag.Title = "List";
 }
-
+<nav>
+    <a class="dellink" href="/Card/New/">New Card</a>
+</nav>
 <h2>List</h2>
-@foreach(var card in Model)
-            {
-                <h2><a href="/Card/Details/@card.Id">@card.Name</a></h2>
-            }
-
+<table class="table">
+    <thead>
+    <th scope="col">ID</th>
+    <th scope="col">Card Name</th>
+    <th scope="col">Card Number</th>
+    <th scope="col">Card Frame</th>
+    <th scope="col">Type</th>
+    <th scope="col">Attribute</th>
+    <th scope="col">Level</th>
+    <th scope="col">Scale</th>
+    <th scope="col">Attack</th>
+    <th scope="col">Defense</th>
+    </thead>
+    <tbody id="table-data">
+        @foreach (var card in Model)
+        {
+            <tr>
+                <th scope="row"><a href="/Card/Details/@card.Id">@card.Id</a></th>
+                <td>@card.Name</td>
+                <td>@card.Number</td>
+                <td>@card.CardFrame</td>
+                <td>@card.CardType</td>
+                <td>@card.Attribute</td>
+                <td>@card.Level</td>
+                <td>@card.Scale</td>
+                <td>@card.Attack</td>
+                <td>@card.Defense</td>
+            </tr>
+        }
+    </tbody>
+</table>

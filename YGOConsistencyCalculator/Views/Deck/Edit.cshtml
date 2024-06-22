@@ -9,30 +9,33 @@
         <input type="hidden" name="DeckId" value="@Model.DeckId" />
     </div>
     <div>
-        <label>Name:</label> <input type="text" name="DeckName" value="@Model.DeckName" />
-    </div>
-    <div>
-        <label>Deck list:</label> <input type="text" name="DeckList" value="@Model.DeckList" />
+        <label for="deckName" class="form-label">Name:</label>
+        <input id="deckName" class="form-control" type="text" name="DeckName" value="@Model.DeckName" />
     </div>
     <div>
         <input type="hidden" name="UserId" value="@Model.UserId" />
     </div>
     <div>
-        <label>Combo Chance:</label> <input type="text" name="StarterChance" value="@Model.StarterChance" />
+        <label for="starterChance" class="form-label">Combo Chance:</label>
+        <input id="starterChance" class="form-control" type="number" name="StarterChance" value="@Model.StarterChance" />
     </div>
     <div>
-        <label>One-Card Combo Chance:</label> <input type="text" name="OneCardChance" value="@Model.OneCardChance" />
+        <label for="oneCardChance" class="form-label">One-Card Combo Chance:</label>
+        <input id="oneCardChance" class="form-control" type="number" name="OneCardChance" value="@Model.OneCardChance" />
     </div>
     <div>
-        <label>Two-Card Combo Chance:</label> <input type="text" name="TwoCardChance" value="@Model.TwoCardChance" />
+        <label for="twoCardChance" class="form-label">Two-Card Combo Chance:</label>
+        <input id="twoCardChance" class="form-control" type="number" name="TwoCardChance" value="@Model.TwoCardChance" />
     </div>
     <div>
-        <label>Extender Chance:</label> <input type="text" name="ExtenderChance" value="@Model.ExtenderChance" />
+        <label for="extenderChance" class="form-label">Extender Chance:</label>
+        <input id="extenderChance" class="form-control" type="number" name="ExtenderChance" value="@Model.ExtenderChance" />
     </div>
     <div>
-        <label>NonEngine Chance:</label> <input type="text" name="EngineReqChance" value="@Model.EngineReqChance" />
+        <label for="engineReqChance" class="form-label">NonEngine Chance:</label>
+        <input id="engineReqChance" class="form-control" type="number" name="EngineReqChance" value="@Model.EngineReqChance" />
     </div>
     <div>
-        <input type="submit" value="Update Deck" />
+        <input class="btn btn-primary" type="submit" value="Update Deck" />
     </div>
 </form>

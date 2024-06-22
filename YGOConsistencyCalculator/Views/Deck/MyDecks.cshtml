@@ -3,13 +3,49 @@
     ViewBag.Title = "MyDecks";
 }
 
-<h2>MyDecks</h2>
-
 <main id="decklists" class="row">
+    <section id="deck-1" class="decklist-view">
+        <div class="card-title">
+            <h2>New Deck</h2>
+        </div>
+        <div class="card-img">
+
+        </div>
+        <div class="card-effect">
+
+        </div>
+    </section>
+    <section id="deck-2" class="decklist-view">
+        <div class="card-title">
+            <h2>New Deck</h2>
+        </div>
+        <div class="card-img">
+
+        </div>
+        <div class="card-effect">
+
+        </div>
+    </section>
+    <section id="deck-3" class="decklist-view">
+        <div class="card-title">
+            <h2>New Deck</h2>
+        </div>
+        <div class="card-img">
+
+        </div>
+        <div class="card-effect">
+
+        </div>
+    </section>
 </main>
         <script src="~/Scripts/mydecks.js"></script>
         <script>
-    window.onload = function () {
-        getDecks('@Html.Raw(Model)');
+            window.onload = function () {
+                $(".decklist-view").on('click', function () {
+                    console.log("test");
+                    createDeck('@Html.Raw(Model)');
+                });
+                getDecks('@Html.Raw(Model)');
+
     }
         </script>

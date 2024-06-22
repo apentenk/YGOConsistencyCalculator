@@ -5,14 +5,14 @@
 
 <h2>New Deck</h2>
 <form action="/Deck/Create" method="POST">
-    <div>
-        <label>Deck Name:</label> <input type="text" name="DeckName" />
+    <div class="mb-3">
+        <label for="deckName" class="form-label">Deck Name:</label>
+        <input type="text" class="form-control" id="deckName" name="DeckName"/>
     </div>
-    <div>
-        <label>User ID:</label> <input type="text" name="UserId" />
-    </div>
-    <div>
-        <label>Deck List:</label> <input type="text" name="DeckList" />
+    <div class="mb-3">
+        <label for="userId" class="form-label">User ID:</label>
+        <input type="text" class="form-control" id="userId" name="UserId" aria-describedby="userIDHelp"/>
+        <div id="userIDHelp" class="form-text">Must match a valid user id</div>
     </div>
     <div>
         <input type="submit" value="Add Deck"/>
